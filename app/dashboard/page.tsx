@@ -12,29 +12,31 @@ import Notifications from "../../components/dashboard/Notifications";
 export default function DashboardPage() {
   return (
     <Router.BrowserRouter>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col bg-background-page">
         <Header />
-        <div className="flex flex-1">
+        <div className="flex flex-col md:flex-row flex-1">
           <Sidebar />
-          <main className="flex-1 p-6">
-            <Router.Routes>
-              <Router.Route
-                index
-                element={
-                  <ProtectedRoute>
-                    <DashboardHome />
-                  </ProtectedRoute>
-                }
-              />
-              <Router.Route
-                path="notifications"
-                element={
-                  <ProtectedRoute>
-                    <Notifications />
-                  </ProtectedRoute>
-                }
-              />
-            </Router.Routes>
+          <main className="flex-1 p-6 md:p-10">
+            <div className="max-w-7xl mx-auto">
+              <Router.Routes>
+                <Router.Route
+                  index
+                  element={
+                    <ProtectedRoute>
+                      <DashboardHome />
+                    </ProtectedRoute>
+                  }
+                />
+                <Router.Route
+                  path="notifications"
+                  element={
+                    <ProtectedRoute>
+                      <Notifications />
+                    </ProtectedRoute>
+                  }
+                />
+              </Router.Routes>
+            </div>
           </main>
         </div>
         <Footer />

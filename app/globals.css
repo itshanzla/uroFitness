@@ -2,31 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #FAFBFB;
+    --foreground: #1F2937;
+  }
+
+  body {
+    @apply bg-background-page text-text-primary antialiased selection:bg-background-selected;
+    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-text-primary;
+  }
+
+  a {
+    @apply text-text-link hover:underline transition-colors;
+  }
+
+  input, textarea, select {
+    @apply bg-form-input text-form-text border-border focus:border-form-focus focus:ring-1 focus:ring-form-focus outline-none transition-all;
+  }
+
+  button {
+    @apply transition-all active:scale-[0.98];
   }
 }
 
-body {
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@layer components {
+  .btn-primary {
+    @apply bg-button-primary text-button-primary-text hover:bg-button-primary-hover active:bg-button-primary-active px-4 py-2 rounded-lg font-medium shadow-sm transition-all;
+  }
 
-/* Utility class to opt-in to the CSS variable foreground color where needed */
-.fg {
-  color: var(--foreground);
+  .btn-secondary {
+    @apply bg-button-secondary text-button-secondary-text border border-button-secondary-border hover:bg-button-secondary-hover px-4 py-2 rounded-lg font-medium shadow-sm transition-all;
+  }
+
+  .card {
+    @apply bg-surface-card border border-border rounded-xl shadow-[0_5px_20px_-15px_rgba(0,0,0,0.3)] p-6;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-form-border rounded-lg bg-form-input text-form-text focus:border-form-focus focus:ring-2 focus:ring-form-focus/20 transition-all outline-none;
+  }
 }
