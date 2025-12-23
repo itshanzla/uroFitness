@@ -1,90 +1,157 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import toast from "react-hot-toast";
+import { PasswordField } from "@/components/common/PasswordField";
+import { authUtils } from "@/lib/auth";
+
+const signinSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email address").required("Required"),
+  password: Yup.string().required("Required"),
+});
 
 export default function SignInPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (typeof window !== "undefined") {
-      localStorage.setItem("auth", "true");
-    }
-    router.push("/dashboard");
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: signinSchema,
+    onSubmit: (values, { setSubmitting }) => {
+      const users = authUtils.getUsers();
+      const loginEmail = values.email.toLowerCase();
+      const user = users.find(
+        (u) => u.email === loginEmail && u.password === values.password
+      );
+
+      if (!user) {
+        toast.error("Invalid email or password", { id: "signin-toast" });
+        setSubmitting(false);
+        return;
+      }
+
+      const session = {
+        user: { id: user.id, email: user.email },
+        token: "bearer_" + authUtils.generateToken(),
+        refreshToken: "refresh_" + authUtils.generateToken(),
+      };
+
+      authUtils.setSession(session);
+      toast.success("Welcome back!");
+      setSubmitting(false);
+      router.push("/dashboard");
+    },
+  });
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-background-page">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-background-page">
+      <div className="w-full max-w-lg">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-button-primary text-white mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-button-secondary-hover text-button-primary mb-4 shadow-lg">
             <svg
-              className="w-8 h-8"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              viewBox="0 0 24 24"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A10.003 10.003 0 0112 3v8h8a10.003 10.003 0 01-4 8.24c-1.201.796-2.58 1.343-4.113 1.571"
-              />
+              <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path>
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-text-primary">Sign In</h1>
+          <h1 className="text-3xl font-semibold font-sans text-text-primary">
+            Welcome to UroFitness
+          </h1>
           <p className="text-text-secondary mt-2">
-            Access your uroFitness account
+            Sign in to track your health journey
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="card space-y-6">
+        <form onSubmit={formik.handleSubmit} className="card space-y-6">
           <div>
-            <label className="block text-sm font-medium text-text-secondary mb-1.5">
-              Email Address
-            </label>
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              placeholder="name@company.com"
-              required
-              className="input-field"
-            />
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <label className="block text-sm font-medium text-text-secondary">
-                Password
+            <div className="flex justify-between items-center mb-1.5">
+              <label className="text-sm font-bold text-text-secondary">
+                Email
               </label>
+              {formik.touched.email && formik.errors.email && (
+                <span className="text-xs text-feedback-error font-medium">
+                  {formik.errors.email}
+                </span>
+              )}
             </div>
             <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="••••••••"
-              required
-              className="input-field"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              type="email"
+              placeholder="you@example.com"
+              className={`input-field ${
+                formik.touched.email && formik.errors.email
+                  ? "!border-feedback-error bg-feedback-error/5"
+                  : ""
+              }`}
             />
           </div>
 
-          <button type="submit" className="w-full btn-primary py-3">
-            Sign In
+          <div>
+            <div className="flex justify-between items-center mb-1.5">
+              <label className="text-sm font-bold text-text-secondary">
+                Password
+              </label>
+              {formik.touched.password && formik.errors.password && (
+                <span className="text-xs text-feedback-error font-medium">
+                  {formik.errors.password}
+                </span>
+              )}
+            </div>
+            <PasswordField
+              name="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your password"
+              isError={!!(formik.touched.password && formik.errors.password)}
+            />
+          </div>
+
+          <button
+            type="submit"
+            onClick={() => {
+              if (Object.keys(formik.errors).length > 0) {
+                formik.setTouched({
+                  email: true,
+                  password: true,
+                });
+              }
+            }}
+            className="w-full btn-primary py-3 transition-all hover:scale-[1.01]"
+            disabled={formik.isSubmitting}
+          >
+            {formik.isSubmitting ? "Signing in..." : "Sign In"}
           </button>
 
           <p className="text-center text-sm text-text-muted mt-4">
-            New to uroFitness?{" "}
+            Don't have an account?{" "}
             <Link
               href="/auth/login"
               className="font-semibold text-text-link hover:underline"
             >
-              Join now
+              Create one
             </Link>
+          </p>
+          <p className="text-center text-xs text-text-muted mt-4 leading-relaxed">
+            This app provides general wellness tracking only and is not intended
+            for medical diagnosis or treatment.
           </p>
         </form>
       </div>

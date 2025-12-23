@@ -8,58 +8,58 @@ module.exports = {
     extend: {
       colors: {
         background: {
-          page: '#FAFBFB',
-          section: '#F8F8F8',
-          alt: '#E3F0F6',
-          hover: '#D4E6F1',
-          selected: '#E3F0F6',
+          page: '#FAFBFB', // Very Light Gray/White
+          section: '#F8F8F8', // Lighter Gray
+          alt: '#E3F0F6', // Soft Pale Blue
+          hover: '#D4E6F1', // Light Sky Blue
+          selected: '#E3F0F6', // Soft Pale Blue
         },
         text: {
-          primary: '#1F2937',
-          secondary: '#4B5563',
-          muted: '#6B7280',
-          disabled: '#9CA3AF',
-          link: '#1193D4',
+          primary: '#1F2937', // Dark Slate Gray
+          secondary: '#4B5563', // Medium Dark Gray
+          muted: '#6B7280', // Medium Gray
+          disabled: '#9CA3AF', // Cool Gray
+          link: '#1193D4', // Vibrant Cyan Blue
         },
         border: {
-          DEFAULT: '#E3F0F6',
-          strong: '#B6D4E3',
-          focus: '#1193D4',
+          DEFAULT: '#E3F0F6', // Soft Pale Blue
+          strong: '#B6D4E3', // Soft Muted Blue
+          focus: '#1193D4', // Vibrant Cyan Blue
         },
         button: {
           primary: {
-            DEFAULT: '#1193D4',
-            text: '#FFFFFF',
-            hover: '#0E7AB0',
-            active: '#0B628C',
+            DEFAULT: '#1193D4', // Vibrant Cyan Blue
+            text: '#FFFFFF', // Pure White
+            hover: '#0E7AB0', // Strong Deep Blue
+            active: '#0B628C', // Dark Navy Blue
           },
           secondary: {
-            DEFAULT: '#E3F0F6',
-            text: '#1193D4',
-            border: '#B6D4E3',
-            hover: '#D4E6F1',
+            DEFAULT: '#E3F0F6', // Soft Pale Blue
+            text: '#1193D4', // Vibrant Cyan Blue
+            border: '#B6D4E3', // Soft Muted Blue
+            hover: '#D4E6F1', // Light Sky Blue
           },
         },
         icon: {
-          DEFAULT: '#1193D4',
-          muted: '#B6D4E3',
-          active: '#1193D4',
+          DEFAULT: '#1193D4', // Vibrant Cyan Blue
+          muted: '#B6D4E3', // Soft Muted Blue
+          active: '#1193D4', // Vibrant Cyan Blue
         },
         surface: {
-          card: '#F8F8F8',
-          sidebar: '#FAFBFB',
-          header: '#FFFFFF',
+          card: '#F8F8F8', // Lighter Gray
+          sidebar: '#FAFBFB', // Very Light Gray/White
+          header: '#FFFFFF', // Pure White
         },
         form: {
-          input: '#FFFFFF',
-          text: '#1F2937',
-          border: '#E3F0F6',
-          focus: '#1193D4',
+          input: '#FFFFFF', // Pure White
+          text: '#1F2937', // Dark Slate Gray
+          border: '#E3F0F6', // Soft Pale Blue
+          focus: '#1193D4', // Vibrant Cyan Blue
         },
         feedback: {
-          success: '#F0FDF4',
-          warning: '#FFFBEB',
-          error: '#FEF2F2',
+          success: '#F0FDF4', // Very Pale Green
+          warning: '#FFFBEB', // Very Pale Yellow
+          error: '#EF4444', // Vibrant Red for errors
         },
       },
     },

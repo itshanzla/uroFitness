@@ -44,6 +44,6 @@
   }
 
   .input-field {
-    @apply w-full px-4 py-2 border border-form-border rounded-lg bg-form-input text-form-text focus:border-form-focus focus:ring-2 focus:ring-form-focus/20 transition-all outline-none;
+    @apply w-full px-4 py-2 border border-form-border rounded-lg bg-form-input text-form-text focus:border-form-focus focus:ring-2 focus:ring-form-focus/20 transition-[border-color,background-color] duration-75 outline-none;
   }
 }
