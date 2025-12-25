@@ -4,12 +4,50 @@
 
 @layer base {
   :root {
-    --background: #FAFBFB;
-    --foreground: #1F2937;
+    --background-page: #FAFBFB;
+    --background-section: #F8F8F8;
+    --text-primary: #1F2937;
+    --text-secondary: #4B5563;
+    --text-muted: #6B7280;
+    --surface-card: #F8F8F8;
+    --surface-sidebar: #F5F5F5;
+    --surface-header: #FFFFFF;
+    --border-default: #E3F0F6;
+    --form-input: #FFFFFF;
+    --form-border: #E3F0F6;
+    
+    /* Sidebar specific link background (active & hover) */
+    --sidebar-link-bg: #DEE1E3;
+
+    /* Keep these blue shades same in both modes */
+    --blue-primary: #1193D4;
+    --blue-pale: #E3F0F6;
+    --blue-muted: #B6D4E3;
+    --blue-hover: #D4E6F1;
+  }
+
+  .dark {
+    --background-page: #1A1A1A; /* Lighter than header */
+    --background-section: #222222;
+    --text-primary: #FFFFFF; 
+    --text-secondary: #E5E7EB; 
+    --text-muted: #9CA3AF;
+    --surface-card: #222222;
+    --surface-sidebar: #1F1F1F;
+    --surface-header: #141414; /* Pure black replaced with #141414 */
+    --form-input: #242424; /* Distinct background for inputs */
+    --border-default: #2A2A2A; 
+    --form-border: #4D4D4D; /* Specific input border color as requested */
+    
+    --sidebar-link-bg: #2A2F32;
+  }
+
+  html {
+    @apply bg-[var(--background-page)] transition-colors duration-300;
   }
 
   body {
-    @apply bg-background-page text-text-primary antialiased selection:bg-background-selected;
+    @apply text-[var(--text-primary)] antialiased bg-transparent;
     font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   }
 
@@ -44,6 +82,69 @@
   }
 
   .input-field {
-    @apply w-full px-4 py-2 border border-form-border rounded-lg bg-form-input text-form-text focus:border-form-focus focus:ring-2 focus:ring-form-focus/20 transition-[border-color,background-color] duration-75 outline-none;
+    @apply w-full px-4 py-2 border border-form-border rounded-lg bg-form-input text-form-text focus:border-form-focus focus:ring-2 focus:ring-[#1193D4]/20 transition-[border-color,background-color] duration-75 outline-none;
   }
+}
+
+/* Background Strips for Dark Mode */
+.dark-mode-bg-strips {
+  position: fixed;
+  inset: 0;
+  z-index: 1; /* Above HTML background, but we need to ensure body content is relatively positioned */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.dark .dark-mode-bg-strips {
+  opacity: 1;
+  filter: blur(2px); /* Blurred edges for the glowing strip effect */
+  
+  /* Reduced number of strips (8 total), wider (120px each), covering ~960px diagonal.
+     Contiguous blocks, no empty gaps between them. 
+     Color updated to #474747 (71, 71, 71) */
+  background: linear-gradient(
+    315deg,
+    rgba(66, 66, 66, 0.15) 0px,
+    rgba(66, 66, 66, 0.15) 120px,
+
+     rgba(66, 66, 66, 0.14) 120px,
+    rgba(66, 66, 66, 0.14) 240px,
+    
+    rgba(66, 66, 66, 0.13) 240px,
+    rgba(66, 66, 66, 0.13) 360px,
+
+     rgba(66, 66, 66, 0.12) 360px,
+    rgba(66, 66, 66, 0.12) 480px,
+    
+    rgba(66, 66, 66, 0.11) 480px,
+    rgba(66, 66, 66, 0.11) 600px,
+    
+    rgba(66, 66, 66, 0.09) 600px,
+    rgba(66, 66, 66, 0.09) 720px,
+
+     rgba(66, 66, 66, 0.08) 720px,
+    rgba(66, 66, 66, 0.08) 840px,
+    
+    rgba(66, 66, 66, 0.07) 840px,
+    rgba(66, 66, 66, 0.07) 960px,
+    
+    rgba(66, 66, 66, 0.05) 960px,
+    rgba(66, 66, 66, 0.05) 1080px,
+    
+    rgba(66, 66, 66, 0.03) 1080px,
+    rgba(66, 66, 66, 0.03) 1200px,
+
+    rgba(66, 66, 66, 0.02) 1200px,
+    rgba(66, 66, 66, 0.03) 1320px,
+
+    rgba(66, 66, 66, 0.01) 1320px,
+    rgba(66, 66, 66, 0.03) 1400px,
+    
+    transparent 960px
+  );
+
+  /* Tighter mask to match the reduced coverage */
+  -webkit-mask-image: linear-gradient(315deg, black 0%, black 60%, transparent 100%);
+  mask-image: linear-gradient(315deg, black 0%, black 60%, transparent 100%);
 }

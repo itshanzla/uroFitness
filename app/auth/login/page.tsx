@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import toast from "react-hot-toast";
 import { PasswordField } from "@/components/common/PasswordField";
 import { authUtils } from "@/lib/auth";
+import ThemeToggle from "@/components/common/ThemeToggle";
 
 const signupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email address").required("Required"),
@@ -62,23 +63,18 @@ export default function LoginPage() {
   });
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-background-page">
+    <div className="min-h-screen flex items-center justify-center p-6 bg-background-page relative">
+      <div className="absolute top-6 right-6">
+        <ThemeToggle />
+      </div>
       <div className="w-full max-w-lg">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-button-secondary-hover text-button-primary mb-4 shadow-lg">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path>
-            </svg>
+          <div className="inline-flex items-center justify-center w-16 h-16 p-4 rounded-full bg-button-secondary-hover text-button-primary mb-4 shadow-lg">
+            <img
+            src="/icons/logo.svg"
+            alt="Logo"
+            className="w-full h-full object-cover"
+          />
           </div>
           <h1 className="text-3xl font-semibold text-text-primary">
             Create Your Account

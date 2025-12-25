@@ -42,7 +42,7 @@ export const PasswordField: React.FC<PasswordFieldProps> = ({
       <button
         type="button"
         onClick={() => setIsVisible(!isVisible)}
-        className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full hover:bg-background-hover text-text-muted hover:text-text-primary transition-colors focus:outline-none"
+        className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full hover:bg-background-hover/40 text-text-muted hover:text-text-primary transition-colors focus:outline-none"
         aria-label={isVisible ? "Hide password" : "Show password"}
       >
         <AnimatePresence mode="wait" initial={false}>

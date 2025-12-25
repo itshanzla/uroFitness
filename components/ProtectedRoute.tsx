@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { authUtils } from "@/lib/auth";
 
 export default function ProtectedRoute({
@@ -9,10 +9,21 @@ export default function ProtectedRoute({
 }: {
   children: React.ReactNode;
 }) {
-  if (typeof window === "undefined") return null;
-  const isAuth = authUtils.isAuthenticated();
-  if (!isAuth) {
-    return <Navigate to="/auth/signin" replace />;
+  const router = useRouter();
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
+  useEffect(() => {
+    const isAuth = authUtils.isAuthenticated();
+    if (!isAuth) {
+      router.push("/auth/signin");
+    } else {
+      setIsAuthorized(true);
+    }
+  }, [router]);
+
+  if (!isAuthorized) {
+    return null;
   }
+
   return <>{children}</>;
 }

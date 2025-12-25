@@ -1,9 +1,14 @@
 "use client";
 
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import { FiSidebar } from "react-icons/fi";
+import { useSidebar } from "@/contexts/SidebarContext";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
+  const { toggleSidebar } = useSidebar();
+
   const handleSignOut = () => {
     if (typeof window !== "undefined") {
       localStorage.removeItem("auth");
@@ -12,53 +17,18 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full bg-surface-header border-b border-border px-6 py-4 flex items-center justify-between sticky top-0 z-50">
-      <div className="flex items-center gap-2">
-        <div className="w-8 h-8 bg-button-primary rounded-lg flex items-center justify-center text-white">
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M13 10V3L4 14h7v7l9-11h-7z"
-            />
-          </svg>
-        </div>
-        <span className="font-bold text-xl tracking-tight text-text-primary">
-          uroFitness
-        </span>
-      </div>
-
-      <div className="flex items-center gap-6">
-        <nav className="hidden md:flex items-center gap-6">
-          <Link
-            to="/"
-            className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
-          >
-            Dashboard
-          </Link>
-          <Link
-            to="/notifications"
-            className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
-          >
-            Notifications
-          </Link>
-        </nav>
-
-        <div className="h-6 w-px bg-border mx-2 hidden md:block"></div>
-
+    <header className="w-full bg-surface-header border-b border-border md:px-6 px-2 pt-4 pb-2 flex items-center justify-between sticky top-0 z-50 transition-all duration-300">
+      <div id="close" className="flex items-center gap-2">
         <button
-          onClick={handleSignOut}
-          className="btn-secondary py-1.5 px-4 text-sm"
+          onClick={toggleSidebar}
+          className="p-2 rounded-lg text-text-secondary hover:text-button-primary hover:bg-background-hover/50 transition-colors focus:outline-none"
+          aria-label="Toggle Sidebar"
         >
-          Sign out
+          <FiSidebar className="w-5 h-5" />
         </button>
       </div>
+
+      <ThemeToggle />
     </header>
   );
 }

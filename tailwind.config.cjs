@@ -8,53 +8,53 @@ module.exports = {
     extend: {
       colors: {
         background: {
-          page: '#FAFBFB', // Very Light Gray/White
-          section: '#F8F8F8', // Lighter Gray
+          page: 'var(--background-page)', 
+          section: 'var(--background-section)', 
           alt: '#E3F0F6', // Soft Pale Blue
-          hover: '#D4E6F1', // Light Sky Blue
-          selected: '#E3F0F6', // Soft Pale Blue
+          hover: 'var(--blue-hover)', // Light Sky Blue
+          selected: 'var(--blue-pale)', // Soft Pale Blue
         },
         text: {
-          primary: '#1F2937', // Dark Slate Gray
-          secondary: '#4B5563', // Medium Dark Gray
-          muted: '#6B7280', // Medium Gray
+          primary: 'var(--text-primary)', 
+          secondary: 'var(--text-secondary)', 
+          muted: 'var(--text-muted)', 
           disabled: '#9CA3AF', // Cool Gray
           link: '#1193D4', // Vibrant Cyan Blue
         },
         border: {
-          DEFAULT: '#E3F0F6', // Soft Pale Blue
-          strong: '#B6D4E3', // Soft Muted Blue
-          focus: '#1193D4', // Vibrant Cyan Blue
+          DEFAULT: 'var(--border-default)', 
+          strong: 'var(--blue-muted)', // Soft Muted Blue
+          focus: 'var(--blue-primary)', // Vibrant Cyan Blue
         },
         button: {
           primary: {
-            DEFAULT: '#1193D4', // Vibrant Cyan Blue
+            DEFAULT: 'var(--blue-primary)', // Vibrant Cyan Blue
             text: '#FFFFFF', // Pure White
             hover: '#0E7AB0', // Strong Deep Blue
             active: '#0B628C', // Dark Navy Blue
           },
           secondary: {
-            DEFAULT: '#E3F0F6', // Soft Pale Blue
-            text: '#1193D4', // Vibrant Cyan Blue
-            border: '#B6D4E3', // Soft Muted Blue
-            hover: '#D4E6F1', // Light Sky Blue
+            DEFAULT: 'var(--blue-pale)', // Soft Pale Blue
+            text: 'var(--blue-primary)', // Vibrant Cyan Blue
+            border: 'var(--blue-muted)', // Soft Muted Blue
+            hover: 'var(--blue-hover)', // Light Sky Blue
           },
         },
         icon: {
-          DEFAULT: '#1193D4', // Vibrant Cyan Blue
-          muted: '#B6D4E3', // Soft Muted Blue
-          active: '#1193D4', // Vibrant Cyan Blue
+          DEFAULT: 'var(--blue-primary)', // Vibrant Cyan Blue
+          muted: 'var(--blue-muted)', // Soft Muted Blue
+          active: 'var(--blue-primary)', // Vibrant Cyan Blue
         },
         surface: {
-          card: '#F8F8F8', // Lighter Gray
-          sidebar: '#FAFBFB', // Very Light Gray/White
-          header: '#FFFFFF', // Pure White
+          card: 'var(--surface-card)', 
+          sidebar: 'var(--surface-sidebar)', 
+          header: 'var(--surface-header)', 
         },
         form: {
-          input: '#FFFFFF', // Pure White
-          text: '#1F2937', // Dark Slate Gray
-          border: '#E3F0F6', // Soft Pale Blue
-          focus: '#1193D4', // Vibrant Cyan Blue
+          input: 'var(--form-input)', 
+          text: 'var(--text-primary)', 
+          border: 'var(--form-border)', 
+          focus: 'var(--blue-primary)', 
         },
         feedback: {
           success: '#F0FDF4', // Very Pale Green
