@@ -15,14 +15,16 @@ export default function DashboardLayout({
   return (
     <ProtectedRoute>
       <SidebarProvider>
-        <div className="flex min-h-screen bg-background-page">
+        <div className="flex h-screen overflow-hidden bg-background-page">
           <Sidebar />
-          <div className="flex-1 flex flex-col min-h-screen relative transition-[margin] duration-300 ease-in-out">
+          <div className="flex-1 flex flex-col h-screen overflow-hidden relative transition-[margin] duration-300 ease-in-out">
             <Header />
-            <main className="flex-1 p-6 md:p-10 overflow-y-auto">
-              <div className="max-w-7xl mx-auto w-full">{children}</div>
-            </main>
-            <Footer />
+            <div className="flex-1 overflow-y-auto flex flex-col">
+              <main className="flex-1 p-6 pl-6 md:p-10">
+                <div className="max-w-7xl mx-auto w-full">{children}</div>
+              </main>
+              <Footer />
+            </div>
           </div>
         </div>
       </SidebarProvider>

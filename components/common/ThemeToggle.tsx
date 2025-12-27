@@ -24,6 +24,10 @@ export default function ThemeToggle() {
 
   const toggleTheme = () => {
     const newDark = !isDark;
+
+    // Disable transitions globally for a split second
+    document.documentElement.classList.add("disable-transitions");
+
     setIsDark(newDark);
     if (newDark) {
       document.documentElement.classList.add("dark");
@@ -32,6 +36,12 @@ export default function ThemeToggle() {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
     }
+
+    // Re-enable transitions after the theme has been applied
+    // setTimeout(..., 0) ensures this runs in the next event loop tick
+    setTimeout(() => {
+      document.documentElement.classList.remove("disable-transitions");
+    }, 0);
   };
 
   if (!mounted) {

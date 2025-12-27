@@ -24,6 +24,13 @@ export default function Sidebar() {
     }
   }, []);
 
+  // Close sidebar on mobile when route changes
+  React.useEffect(() => {
+    if (isOpen && window.innerWidth < 768) {
+      closeSidebar();
+    }
+  }, [pathname]);
+
   // Lock body scroll ONLY when sidebar is open on mobile
   React.useEffect(() => {
     const checkScrollLock = () => {
@@ -122,7 +129,7 @@ export default function Sidebar() {
           href="/dashboard"
           className="p-6 pb-5 flex items-center gap-3 h-[73px] min-w-[256px] transition-colors hover:no-underline"
         >
-          <div className="w-10 h-10 bg-border text-button-primary flex items-center rounded-full p-2 pb-0 justify-center text-white overflow-hidden shrink-0">
+          <div className="w-10 h-10 bg-border text-button-primary flex items-center rounded-full p-2 justify-center text-white overflow-hidden shrink-0">
             <img
               src="/icons/logo.svg"
               alt="Logo"
@@ -166,7 +173,7 @@ export default function Sidebar() {
           {email && (
             <div className="w-full px-3 mb-2 overflow-hidden">
               <p
-                className="text-sm font-semibold text-white/70 truncate"
+                className="text-sm font-semibold text-text-secondary truncate"
                 title={email}
               >
                 {email}

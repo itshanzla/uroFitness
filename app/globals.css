@@ -43,7 +43,15 @@
   }
 
   html {
-    @apply bg-[var(--background-page)] transition-colors duration-300;
+    @apply bg-[var(--background-page)];
+  }
+
+  /* Utility to disable transitions during theme switching */
+  .disable-transitions,
+  .disable-transitions *,
+  .disable-transitions *:before,
+  .disable-transitions *:after {
+    transition: none !important;
   }
 
   body {
@@ -147,4 +155,56 @@
   /* Tighter mask to match the reduced coverage */
   -webkit-mask-image: linear-gradient(315deg, black 0%, black 60%, transparent 100%);
   mask-image: linear-gradient(315deg, black 0%, black 60%, transparent 100%);
+}
+
+/* Custom Scrollbar Styling - Global Scope */
+*::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #57B1DE !important;
+  border-radius: 10px !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #4690B8 !important;
+}
+
+/* Force hide all scrollbar buttons/arrows */
+*::-webkit-scrollbar-button,
+*::-webkit-scrollbar-button:vertical,
+*::-webkit-scrollbar-button:horizontal,
+*::-webkit-scrollbar-button:start,
+*::-webkit-scrollbar-button:end,
+*::-webkit-scrollbar-button:single-button,
+*::-webkit-scrollbar-button:double-button,
+*::-webkit-scrollbar-button:no-button,
+*::-webkit-scrollbar-button:vertical:start:decrement,
+*::-webkit-scrollbar-button:vertical:start:increment,
+*::-webkit-scrollbar-button:vertical:end:decrement,
+*::-webkit-scrollbar-button:vertical:end:increment,
+*::-webkit-scrollbar-button:horizontal:start:decrement,
+*::-webkit-scrollbar-button:horizontal:start:increment,
+*::-webkit-scrollbar-button:horizontal:end:decrement,
+*::-webkit-scrollbar-button:horizontal:end:increment {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+*::-webkit-scrollbar-corner {
+  display: none !important;
+  background: transparent !important;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: #57B1DE transparent !important;
 }
