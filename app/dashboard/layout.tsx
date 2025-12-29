@@ -17,10 +17,10 @@ export default function DashboardLayout({
       <SidebarProvider>
         <div className="flex h-screen overflow-hidden bg-background-page">
           <Sidebar />
-          <div className="flex-1 flex flex-col h-screen overflow-hidden relative transition-[margin] duration-300 ease-in-out">
+          <div className="flex-1 flex flex-col h-screen overflow-hidden relative transition-[margin] duration-300 ease-in-out z-10">
             <Header />
-            <div className="flex-1 overflow-y-auto flex flex-col">
-              <main className="flex-1 p-6 pl-6 md:p-10">
+            <div className="flex-1 overflow-y-auto flex flex-col relative z-10">
+              <main className="flex-1 p-6 pl-6 md:p-10 relative z-10">
                 <div className="max-w-7xl mx-auto w-full">{children}</div>
               </main>
               <Footer />
