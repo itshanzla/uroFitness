@@ -44,6 +44,8 @@
 
   html {
     @apply bg-[var(--background-page)];
+    overflow-y: scroll; /* Always show scrollbar to prevent layout shift */
+    scrollbar-gutter: stable; /* Reserve space for scrollbar */
   }
 
   /* Utility to disable transitions during theme switching */
@@ -207,4 +209,11 @@
 * {
   scrollbar-width: thin !important;
   scrollbar-color: #57B1DE transparent !important;
+}
+
+/* Force scrollbar gutter on all scrollable containers */
+.overflow-y-scroll,
+[style*="overflow-y: scroll"],
+[style*="overflowY: scroll"] {
+  scrollbar-gutter: stable !important;
 }

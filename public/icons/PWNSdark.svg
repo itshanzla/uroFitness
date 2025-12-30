@@ -3,30 +3,25 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 36 36" style="enable-background:new 0 0 36 36;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#0E1A2C;stroke-width:2;stroke-miterlimit:10;}
+	.st0{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
 	.st1{fill:#4CA3CF;}
-	.st2{fill:none;stroke:#0E1A2C;stroke-linecap:round;stroke-miterlimit:10;}
-	.st3{fill:none;stroke:#0E1A2C;stroke-miterlimit:10;}
-	.st4{display:none;}
-	.st5{display:inline;fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st6{display:inline;}
-	.st7{fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-miterlimit:10;}
-	.st8{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
 </style>
-<g class="st4">
-	<path class="st5" d="M28.7,30.5H8.5c-1,0-1.9-0.8-1.9-1.9V8.4c0-1,0.8-1.9,1.9-1.9h20.2c1,0,1.9,0.8,1.9,1.9v20.2
-		C30.6,29.7,29.7,30.5,28.7,30.5z"/>
-	<g class="st6">
-		<circle class="st1" cx="25" cy="11.3" r="0.6"/>
-		<circle class="st1" cx="22.2" cy="12.1" r="0.6"/>
-		<circle class="st1" cx="19.5" cy="13.4" r="0.6"/>
-		<circle class="st1" cx="16.8" cy="15.3" r="0.6"/>
+<g>
+	<path class="st0" d="M28.1,30H7.9c-1,0-1.9-0.8-1.9-1.9V7.9C6,6.8,6.8,6,7.9,6h20.2c1,0,1.9,0.8,1.9,1.9v20.2
+		C30,29.2,29.2,30,28.1,30z"/>
+	<g>
+		<circle class="st1" cx="24.4" cy="10.8" r="0.6"/>
+		<circle class="st1" cx="21.6" cy="11.5" r="0.6"/>
+		<circle class="st1" cx="18.9" cy="12.9" r="0.6"/>
+		<circle class="st1" cx="16.3" cy="14.8" r="0.6"/>
 	</g>
-	<g class="st6">
-		<path class="st7" d="M22.9,26.1V15.9c0-0.4,0.3-0.6,0.6-0.6h1.2c0.3,0,0.5,0.2,0.5,0.5l0,9.8c0,0.3-0.2,0.5-0.5,0.5H12.6
+	<g>
+		<path class="st2" d="M22.3,25.5V15.4c0-0.4,0.3-0.6,0.6-0.6h1.2c0.3,0,0.5,0.2,0.5,0.5l0,9.8c0,0.3-0.2,0.5-0.5,0.5H12
 			c-0.6,0-1.1-0.4-1.1-1v-9.8"/>
-		<path class="st8" d="M13.7,26.1v-6.1c0-0.2,0.2-0.4,0.5-0.4h1.4c0.3,0,0.5,0.2,0.5,0.4v6.1"/>
-		<path class="st8" d="M18.4,26.1v-7.9c0-0.3,0.2-0.5,0.4-0.5h1.3c0.2,0,0.4,0.2,0.4,0.5v7.9"/>
+		<path class="st3" d="M13.1,25.5v-6.1c0-0.2,0.2-0.4,0.5-0.4H15c0.3,0,0.5,0.2,0.5,0.4v6.1"/>
+		<path class="st3" d="M17.8,25.5v-7.9c0-0.3,0.2-0.5,0.4-0.5h1.3c0.2,0,0.4,0.2,0.4,0.5v7.9"/>
 	</g>
 </g>
 </svg>

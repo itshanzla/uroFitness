@@ -74,26 +74,26 @@ export default function Sidebar() {
       path: "/dashboard/optimal-flow-blueprint",
       icon: <PiBlueprint className="w-5 h-5" />,
     },
-    {
-      name: "PWNS™ — Nutrition",
-      path: "/dashboard/pwns-nutrition-insight",
-      icon: <CiApple className="w-5 h-5" />,
-    },
-    {
-      name: "Peak Timing Protocol™",
-      path: "/dashboard/peak-timing-protocol",
-      icon: <IoMdTrendingUp className="w-5 h-5" />,
-    },
-    {
-      name: "Daily Circulation™",
-      path: "/dashboard/daily-circulation-activator",
-      icon: <TbCalendarPlus className="w-5 h-5" />,
-    },
-    {
-      name: "Nightly Insights™",
-      path: "/dashboard/nightly-performance-insights",
-      icon: <TbHazeMoon className="w-5 h-5" />,
-    },
+    // {
+    //   name: "PWNS™ — Nutrition",
+    //   path: "/dashboard/pwns-nutrition-insight",
+    //   icon: <CiApple className="w-5 h-5" />,
+    // },
+    // {
+    //   name: "Peak Timing Protocol™",
+    //   path: "/dashboard/peak-timing-protocol",
+    //   icon: <IoMdTrendingUp className="w-5 h-5" />,
+    // },
+    // {
+    //   name: "Daily Circulation™",
+    //   path: "/dashboard/daily-circulation-activator",
+    //   icon: <TbCalendarPlus className="w-5 h-5" />,
+    // },
+    // {
+    //   name: "Nightly Insights™",
+    //   path: "/dashboard/nightly-performance-insights",
+    //   icon: <TbHazeMoon className="w-5 h-5" />,
+    // },
   ];
 
   return (
