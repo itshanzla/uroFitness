@@ -1,200 +1,96 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 
 export default function Week1Page() {
-  const [expandedSection, setExpandedSection] = useState<string | null>("concept");
-
-  const toggleSection = (section: string) => {
-    setExpandedSection(expandedSection === section ? null : section);
-  };
-
   return (
-    <div className="pb-12 relative z-10 w-full px-2 md:px-6">
-      {/* Page Width Container */}
-      <div className="w-full md:max-w-[56rem] md:mx-0 md:ml-[15%]">
-        {/* Header */}
-        <div className="space-y-4 mb-8">
-          <Link
-            href="/dashboard/optimal-flow-blueprint"
-            className="text-sm text-text-link hover:underline inline-flex items-center gap-2"
-          >
-            Back to All Weeks
-          </Link>
+    <div className="pb-12 relative z-10 w-full px-4 md:px-6">
+      <div className="w-full max-w-2xl mx-auto">
+        {/* Back Link */}
+        <Link
+          href="/dashboard/optimal-flow-blueprint"
+          className="text-sm text-text-secondary hover:text-text-primary inline-block mb-10"
+        >
+          Back
+        </Link>
 
-          <div className="space-y-2">
-            <span className="text-xs font-semibold text-text-link uppercase tracking-wider">
-              Week 1 • Phase 1: Foundation
-            </span>
+        {/* Week Title */}
+        <h1 className="text-2xl font-semibold text-text-primary mb-12">
+          Week 1: What's Actually Happening
+        </h1>
 
-            <h1 className="text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
-              What's Actually Happening
-            </h1>
-
-            <p className="text-lg text-text-secondary">
-              Understanding &gt; panic
+        {/* Structured Weekly Content */}
+        <div className="space-y-10">
+          {/* CONCEPT SECTION */}
+          <section className="bg-surface-card border border-border rounded-xl p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xs font-semibold text-text-secondary uppercase tracking-wider">
+                Concept
+              </span>
+            </div>
+            <p className="text-text-primary leading-relaxed">
+              An erection is a vascular event — not a willpower test. It requires
+              coordinated blood flow, nerve signaling, and hormonal balance.
+              Episodic difficulty does not indicate permanent damage. Anxiety and
+              vigilance tend to worsen the underlying physiology. Understanding
+              this can reduce the emotional weight.
             </p>
-          </div>
-        </div>
+          </section>
 
-        {/* Sections */}
-        <div className="space-y-4">
-          {/* Concept */}
-          <div className="bg-surface-card border border-border rounded-xl">
-           <button
-  onClick={() => toggleSection("concept")}
-  className="w-full px-6 py-4 flex items-center text-left"
->
-  <span className="flex-1 text-lg font-bold text-text-primary">
-    Concept
-  </span>
-  <Chevron />
-</button>
-
-
-            {expandedSection === "concept" && (
-              <div className="px-6 pb-6 space-y-4 text-text-secondary leading-relaxed">
-                <p>
-                  Erection is a vascular event, not a willpower test. It requires
-                  coordinated blood flow, nerve signaling, and hormonal balance.
-                </p>
-                <p>
-                  Episodic failure does not equal permanent damage. Anxiety,
-                  stress, and vigilance worsen the underlying physiology.
-                </p>
-                <p>
-                  Understanding the mechanics reduces the emotional weight.
-                  This week is about shifting from panic to clarity.
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* Primary Action */}
-          <div className="bg-surface-card border border-border rounded-xl">
-            <button
-              onClick={() => toggleSection("action")}
-              className="w-full px-6 py-4 flex items-center justify-between text-left"
-            >
-              <span className="text-lg font-bold text-text-primary">
+          {/* PRIMARY ACTION SECTION */}
+          <section className="bg-surface-card border-2 border-text-primary/20 rounded-xl p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xs font-semibold text-text-primary uppercase tracking-wider">
                 Primary Action
               </span>
-              <Chevron />
-            </button>
+              <span className="text-xs text-text-secondary px-2 py-0.5 bg-surface-elevated rounded-full">
+                Only required action this week
+              </span>
+            </div>
+            <p className="text-text-primary text-lg leading-relaxed">
+              Take a 10-minute walk each day, at any pace, at any time.
+            </p>
+          </section>
 
-            {expandedSection === "action" && (
-              <div className="px-6 pb-6 space-y-4 text-text-secondary leading-relaxed">
-                <p className="font-semibold text-text-primary">
-                  10-minute daily walk, any pace, any time.
-                </p>
-                <p>
-                  This is not about fitness. It's about creating a repeatable,
-                  low-pressure behavior that supports circulation.
-                </p>
-                <p>
-                  Walk at a comfortable pace. No tracking required.
-                  The goal is consistency, not intensity.
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* Reinforcement */}
-          <div className="bg-surface-card border border-border rounded-xl">
-            <button
-              onClick={() => toggleSection("reinforcement")}
-              className="w-full px-6 py-4 flex items-center justify-between text-left"
-            >
-              <span className="text-lg font-bold text-text-primary">
+          {/* REINFORCEMENT SECTION */}
+          <section className="bg-surface-card border border-border rounded-xl p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xs font-semibold text-text-secondary uppercase tracking-wider">
                 Reinforcement
               </span>
-              <Chevron />
-            </button>
+              <span className="text-xs text-text-secondary/60 italic">
+                Continuation, not a second task
+              </span>
+            </div>
+            <p className="text-text-secondary leading-relaxed">
+              If it feels natural, go to bed 15 minutes earlier. This supports
+              the primary action — it is not an additional task.
+            </p>
+          </section>
 
-            {expandedSection === "reinforcement" && (
-              <div className="px-6 pb-6 space-y-4 text-text-secondary leading-relaxed">
-                <p>Go to bed 15 minutes earlier than usual.</p>
-                <p>
-                  This stacks with the walking habit without adding complexity.
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* Optional Amplifier */}
-          <div className="bg-surface-card border border-border rounded-xl opacity-90">
-            <button
-              onClick={() => toggleSection("optional")}
-              className="w-full px-6 py-4 flex items-center justify-between text-left"
-            >
-              <span className="text-lg font-bold text-text-primary">
+          {/* OPTIONAL AMPLIFIER SECTION */}
+          <section className="border border-dashed border-border/60 rounded-xl p-6 opacity-70">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xs font-semibold text-text-secondary/60 uppercase tracking-wider">
                 Optional Amplifier
               </span>
-              <Chevron />
-            </button>
+              <span className="text-xs text-text-secondary/50 px-2 py-0.5 border border-border/50 rounded-full">
+                Skip if it feels like too much
+              </span>
+            </div>
+            <p className="text-sm text-text-secondary/60 leading-relaxed">
+              Morning sunlight (2–5 minutes) can support circadian rhythm.
+            </p>
+          </section>
 
-            {expandedSection === "optional" && (
-              <div className="px-6 pb-6 space-y-4 text-text-secondary leading-relaxed">
-                <p className="font-semibold text-text-primary">
-                  Morning sunlight exposure (2–5 minutes).
-                </p>
-                <p>
-                  Helps regulate circadian rhythm and hormonal balance.
-                </p>
-                <p className="text-sm italic">
-                  Optional. Skip if it feels like too much.
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* Closing */}
-          <div className="bg-surface-card border border-border rounded-xl px-6 py-6">
-            <p className="font-semibold text-text-primary">
+          {/* EXPLICIT CLOSE */}
+          <section className="text-center py-6">
+            <p className="text-text-primary font-medium text-lg">
               That's it this week.
             </p>
-            <p className="text-text-secondary mt-2">
-              You haven't changed your life — you've started.
-            </p>
-          </div>
-        </div>
-
-        {/* Navigation */}
-        <div className="flex items-center justify-between pt-8 border-t border-border">
-          <Link
-            href="/dashboard/optimal-flow-blueprint"
-            className="text-sm text-text-secondary hover:text-text-link"
-          >
-            All Weeks
-          </Link>
-          <Link
-            href="/dashboard/optimal-flow-blueprint/week-2"
-            className="text-sm text-text-link hover:underline"
-          >
-            Next: Week 2
-          </Link>
+          </section>
         </div>
       </div>
     </div>
-  );
-}
-
-/* Chevron Icon */
-function Chevron() {
-  return (
-    <svg
-      className="w-5 h-5 text-text-secondary flex-shrink-0"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M19 9l-7 7-7-7"
-      />
-    </svg>
   );
 }
